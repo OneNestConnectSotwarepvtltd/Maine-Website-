@@ -80,14 +80,14 @@ const ContactPage = () => {
     {
       icon: Phone,
       title: 'Phone',
-      value: '+91 1234567890',
+      value: '+91 8588942008',
       color: 'from-green-500 to-emerald-500',
-      link: 'tel:+911234567890'
+      link: 'tel:+918588942008'
     },
     {
       icon: MapPin,
       title: 'Address',
-      value: '123 Business Park, Mumbai, Maharashtra 400001, India',
+      value: 'G.NO-2 Vill- Chhalera, Noida, Uttar Pradesh, 201301',
       color: 'from-purple-500 to-pink-500',
       link: '#map'
     },
@@ -537,22 +537,22 @@ const ContactPage = () => {
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
-              {/* Map */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-3xl shadow-lg overflow-hidden border-4 border-gray-100"
-              >
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.082177513740588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
-                  width="100%"
-                  height="400"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  title="Office Location"
-                  className="w-full"
-                />
-              </motion.div>
+               {/* Map */}
+<motion.div
+  whileHover={{ scale: 1.02 }}
+  className="bg-white rounded-3xl shadow-lg overflow-hidden border-4 border-gray-100"
+>
+  <iframe
+    src="https://www.google.com/maps?q=Chhalera+Noida+Uttar+Pradesh+201301&output=embed"
+    width="100%"
+    height="400"
+    style={{ border: 0 }}
+    allowFullScreen=""
+    loading="lazy"
+    title="Office Location - Chhalera, Noida"
+    className="w-full"
+  />
+</motion.div>
 
               {/* Why Choose Us */}
               <motion.div

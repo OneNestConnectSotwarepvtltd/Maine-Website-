@@ -55,24 +55,24 @@ const AnimatedNumber = ({ value }) => {
 // Dummy data
 const teamMembers = [
   {
-    name: "Rajesh Kumar",
+    name: "Shushil Kumar",
     role: "CEO & Founder",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+    image: "/images/testimonal/shushil.jpg",
   },
   {
-    name: "Priya Sharma",
-    role: "CTO",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+    name: "Omkar Chauhan",
+    role: "Frontend Developer",
+    image: "/images/testimonal/Omkar.jpeg",
   },
   {
-    name: "Amit Patel",
-    role: "Lead Developer",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+    name: "Ayush Nigam",
+    role: "Frontend Developer",
+    image: "/images/testimonal/Ayush.jpg",
   },
   {
-    name: "Sneha Reddy",
-    role: "Design Head",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+    name: "Bhavesh Sattavan",
+    role: "Backend Developer",
+    image: "/images/testimonal/bhavesh.png",
   },
 ];
 

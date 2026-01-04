@@ -53,21 +53,13 @@ const PartnersSection = () => {
   }, []);
 
   const partners = [
-    { name: 'Microsoft', logo: 'https://img.icons8.com/color/96/microsoft.png', gradient: 'from-blue-500 to-cyan-500' },
-    { name: 'Google Cloud', logo: 'https://img.icons8.com/color/96/google-cloud.png', gradient: 'from-red-500 to-yellow-500' },
-    { name: 'AWS', logo: 'https://img.icons8.com/color/96/amazon-web-services.png', gradient: 'from-orange-500 to-amber-500' },
-    { name: 'Azure', logo: 'https://img.icons8.com/fluency/96/azure-1.png', gradient: 'from-blue-600 to-indigo-600' },
-    { name: 'IBM', logo: 'https://img.icons8.com/color/96/ibm.png', gradient: 'from-blue-700 to-blue-900' },
-    { name: 'Oracle', logo: 'https://img.icons8.com/color/96/oracle-logo.png', gradient: 'from-red-600 to-red-800' },
-    { name: 'Salesforce', logo: 'https://img.icons8.com/color/96/salesforce.png', gradient: 'from-cyan-500 to-blue-600' },
-    { name: 'Adobe', logo: 'https://img.icons8.com/color/96/adobe-creative-cloud.png', gradient: 'from-red-500 to-pink-500' },
-    { name: 'SAP', logo: 'https://img.icons8.com/color/96/sap.png', gradient: 'from-blue-500 to-blue-700' },
-    { name: 'Docker', logo: 'https://img.icons8.com/color/96/docker.png', gradient: 'from-blue-400 to-cyan-500' },
-    { name: 'Kubernetes', logo: 'https://img.icons8.com/color/96/kubernetes.png', gradient: 'from-blue-500 to-purple-600' },
-    { name: 'MongoDB', logo: 'https://img.icons8.com/color/96/mongodb.png', gradient: 'from-green-500 to-green-700' },
-    { name: 'React', logo: 'https://img.icons8.com/color/96/react-native.png', gradient: 'from-cyan-400 to-blue-500' },
-    { name: 'Node.js', logo: 'https://img.icons8.com/color/96/nodejs.png', gradient: 'from-green-600 to-green-800' },
-    { name: 'Python', logo: 'https://img.icons8.com/color/96/python.png', gradient: 'from-blue-500 to-yellow-500' }
+    { name: 'Capital Infra', logo: '/PartnersImages/logo-capital-infta.png', gradient: 'from-blue-500 to-cyan-500' },
+    { name: 'Evaluate Solution', logo: '/PartnersImages/logo-Evalute-Slution.jpg', gradient: 'from-purple-500 to-pink-500' },
+    { name: 'Urk Ayurveda', logo: '/PartnersImages/logo-Urk-ayurveda.png', gradient: 'from-green-500 to-emerald-600' },
+    { name: 'Motilal Global', logo: '/PartnersImages/MotilalGlobal.jpg', gradient: 'from-orange-500 to-red-600' },
+    { name: 'Moxoto', logo: '/PartnersImages/Moxoto-logo.webp', gradient: 'from-indigo-500 to-purple-600' },
+    { name: 'Sanjeevni', logo: '/PartnersImages/Sanjeevni.jpg', gradient: 'from-teal-500 to-cyan-600' },
+    { name: 'Sky', logo: '/PartnersImages/Sky-logo.png', gradient: 'from-blue-600 to-sky-500' }
   ];
 
   const handleScroll = (direction) => {

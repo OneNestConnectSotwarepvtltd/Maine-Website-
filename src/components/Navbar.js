@@ -49,7 +49,7 @@ const Navbar = () => {
           <Link to="/" className="px-4 py-2">
   <div className="flex items-center space-x-3">
     <img
-      src="/images/logo-Onenest.png"
+      src="/images/OneNest_logo.jpeg"
       alt="ONENEST CONNECT"
       className="h-14 w-auto object-contain"
     />
