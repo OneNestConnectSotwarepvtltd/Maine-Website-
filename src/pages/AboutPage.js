@@ -1,6 +1,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
+import WhatsAppButton from "../components/Watsappfloat";
 
 /* ---------- Animations ---------- */
 const fadeUp = {
@@ -163,6 +164,7 @@ const AboutPage = () => {
   const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   return (
+    
     <div className="overflow-hidden bg-gray-50">
       {/* Progress Bar
       <motion.div
@@ -191,6 +193,7 @@ const AboutPage = () => {
           style={{ right: "10%", bottom: "20%" }}
         />
       </div>
+      <WhatsAppButton/>
 
       {/* ================= HERO ================= */}
       <section className="relative h-screen -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">

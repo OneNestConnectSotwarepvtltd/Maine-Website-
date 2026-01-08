@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { motion, useScroll, useTransform, useSpring,useInView } from 'framer-motion';
 import { ArrowRight, Users, Award, Headphones, CheckCircle, Sparkles, Zap } from 'lucide-react';
+import WhatsAppButton from '../components/Watsappfloat';
 /* ---------- Animated Number Component ---------- */
 const AnimatedNumber = ({ value, suffix = '' }) => {
   const ref = useRef(null);
@@ -174,6 +175,7 @@ const ServicesPage = () => {
           style={{ right: "10%", bottom: "20%" }}
         />
       </div>
+      <WhatsAppButton/>
 
            {/* ================= HERO SECTION - ABOUT PAGE STYLE ================= */}
       <section className="relative h-screen -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">

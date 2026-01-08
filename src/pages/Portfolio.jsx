@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { ArrowRight, ExternalLink, Github, X, Sparkles, Zap, Award, TrendingUp } from 'lucide-react';
-
+import WhatsAppButton from '../components/Watsappfloat';
 
 /* ---------- Animations ---------- */
 const fadeUp = {
@@ -179,6 +179,7 @@ const Portfolio = () => {
           style={{ right: "10%", bottom: "20%" }}
         />
       </div>
+      <WhatsAppButton/>
 
       {/* ================= HERO SECTION ================= */}
 <section className="relative h-screen -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Clock, Globe } from 'lucide-react';
-
+import WhatsAppButton from '../components/Watsappfloat';
 // API Configuration
 const API_URL = 'http://localhost:5000/api';
 
@@ -252,6 +252,7 @@ const ContactPage = () => {
           </motion.div>
         </div>
       </section>
+      <WhatsAppButton/>
 
       {/* ================= CONTACT INFO CARDS ================= */}
       <section className="py-32 bg-white relative">

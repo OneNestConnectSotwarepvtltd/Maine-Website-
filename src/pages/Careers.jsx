@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { ArrowRight, Users, Award, TrendingUp, Globe, MapPin, Briefcase, Clock, Layers, Zap, Heart, Code, Rocket } from 'lucide-react';
-
+import WhatsAppButton from '../components/Watsappfloat';
 /* ---------- Animated Number Component ---------- */
 const AnimatedNumber = ({ value, suffix = '' }) => {
   const ref = useRef(null);
@@ -283,6 +283,7 @@ const CareersPage = () => {
           </motion.div>
         </div>
       </section>
+      <WhatsAppButton/>
 
      
 
