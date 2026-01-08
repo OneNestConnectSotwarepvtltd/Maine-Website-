@@ -193,12 +193,11 @@ const AboutPage = () => {
       </div>
 
       {/* ================= HERO ================= */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+      <section className="relative h-screen -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
         <motion.div
           className="absolute inset-0 opacity-20"
-          style={{ y: parallaxY }}
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920')] bg-cover bg-center" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop')] bg-cover bg-center" />
         </motion.div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
@@ -223,7 +222,7 @@ const AboutPage = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-6xl md:text-8xl font-bold text-white mb-6"
           >
-            About <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">ONENEST CONNECT</span>
+            About <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Us</span>
           </motion.h1>
 
           <motion.p

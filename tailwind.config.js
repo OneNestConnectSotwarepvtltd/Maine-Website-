@@ -10,7 +10,9 @@ module.exports = {
         secondary: '#8b5cf6',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        // sans: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+        // sans: ['"Comic Neue"', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

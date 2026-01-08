@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Clock, Globe } from 'lucide-react';
 
+// API Configuration
+const API_URL = 'http://localhost:5000/api';
+
 /* ---------- Animations ---------- */
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
@@ -41,6 +44,7 @@ const ContactPage = () => {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [focusedField, setFocusedField] = useState(null);
 
@@ -73,9 +77,9 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'info@onenestconnect.com',
+      value: 'info@onenestconnect.in',
       color: 'from-blue-500 to-cyan-500',
-      link: 'mailto:info@onenestconnect.com'
+      link: 'mailto:info@onenestconnect.in'
     },
     {
       icon: Phone,
@@ -87,7 +91,7 @@ const ContactPage = () => {
     {
       icon: MapPin,
       title: 'Address',
-      value: 'G.NO-2 Vill- Chhalera, Noida, Uttar Pradesh, 201301',
+      value: 'Sector 44, Near Botanical Garden Metro Station, Noida, Uttar Pradesh 201301',
       color: 'from-purple-500 to-pink-500',
       link: '#map'
     },
@@ -106,6 +110,7 @@ const ContactPage = () => {
     if (errors[name]) {
       setErrors({ ...errors, [name]: '' });
     }
+    if (submitError) setSubmitError('');
   };
 
   const handleServiceChange = (service) => {
@@ -136,17 +141,36 @@ const ContactPage = () => {
     }
 
     setIsSubmitting(true);
+    setSubmitError('');
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
-    
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', services: [], budget: '', message: '' });
-    }, 4000);
+    try {
+      const response = await fetch(`${API_URL}/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      setIsSubmitting(false);
+      setSubmitted(true);
+      
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: '', email: '', phone: '', services: [], budget: '', message: '' });
+      }, 5000);
+
+    } catch (error) {
+      console.error('Submission error:', error);
+      setIsSubmitting(false);
+      setSubmitError(error.message || 'Failed to submit form. Please try again.');
+    }
   };
 
   return (
@@ -173,14 +197,12 @@ const ContactPage = () => {
         />
       </div>
 
-      {/* ================= HERO ================= */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-        <motion.div
-          className="absolute inset-0 opacity-20"
-          style={{ y: parallaxY }}
-        >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920')] bg-cover bg-center" />
-        </motion.div>
+      <section className="relative h-screen -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+  <motion.div
+    className="absolute inset-0 opacity-20"
+  >
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&h=1080&fit=crop')] bg-cover bg-center" />
+  </motion.div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <motion.div
@@ -221,12 +243,13 @@ const ContactPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7, duration: 0.5 }}
           >
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all">
+            <button 
+              onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all"
+            >
               Get in Touch
             </button>
           </motion.div>
-
-          
         </div>
       </section>
 
@@ -268,7 +291,7 @@ const ContactPage = () => {
       </section>
 
       {/* ================= FORM & MAP SECTION ================= */}
-      <section className="py-20 bg-white">
+      <section id="contact-form" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -297,6 +320,21 @@ const ContactPage = () => {
                     <div>
                       <h4 className="font-bold text-lg">Success!</h4>
                       <p>Thank you! We'll get back to you soon.</p>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Error Message */}
+                {submitError && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-gradient-to-r from-red-500 to-rose-500 text-white p-6 rounded-2xl mb-6 flex items-center shadow-lg"
+                  >
+                    <AlertCircle className="w-8 h-8 mr-4 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-lg">Error</h4>
+                      <p>{submitError}</p>
                     </div>
                   </motion.div>
                 )}
@@ -543,16 +581,17 @@ const ContactPage = () => {
   className="bg-white rounded-3xl shadow-lg overflow-hidden border-4 border-gray-100"
 >
   <iframe
-    src="https://www.google.com/maps?q=Chhalera+Noida+Uttar+Pradesh+201301&output=embed"
+    src="https://www.google.com/maps?q=Sector+44+Near+Botanical+Garden+Metro+Station+Noida+Uttar+Pradesh+201301&output=embed"
     width="100%"
     height="400"
     style={{ border: 0 }}
-    allowFullScreen=""
+    allowFullScreen
     loading="lazy"
-    title="Office Location - Chhalera, Noida"
+    title="Office Location - Sector 44, Noida"
     className="w-full"
   />
 </motion.div>
+
 
               {/* Why Choose Us */}
               <motion.div
@@ -560,7 +599,7 @@ const ContactPage = () => {
                 className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-8 shadow-xl text-white"
               >
                 <Globe className="w-12 h-12 mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Why Choose OneNest Connect?</h3>
+                <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
                 <ul className="space-y-3">
                   {[
                     '100+ Successful Projects Delivered',

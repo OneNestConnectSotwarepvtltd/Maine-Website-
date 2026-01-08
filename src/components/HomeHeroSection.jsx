@@ -94,7 +94,7 @@ const HomeHeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="px-6 py-2 bg-white bg-opacity-20 rounded-full backdrop-blur-sm border border-white border-opacity-20">
-            <span className="text-sm font-semibold tracking-wide uppercase">🚀 Your Digital Partner</span>
+            <span className="text-sm font-semibold tracking-wide uppercase">Your Digital Partner</span>
           </div>
         </motion.div>
         

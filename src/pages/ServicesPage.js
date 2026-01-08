@@ -175,11 +175,10 @@ const ServicesPage = () => {
         />
       </div>
 
-      {/* ================= HERO SECTION - ABOUT PAGE STYLE ================= */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+           {/* ================= HERO SECTION - ABOUT PAGE STYLE ================= */}
+      <section className="relative h-screen -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
         <motion.div
           className="absolute inset-0 opacity-20"
-          style={{ y: parallaxY }}
         >
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920')] bg-cover bg-center" />
         </motion.div>
@@ -339,7 +338,7 @@ const ServicesPage = () => {
             viewport={{ once: true }}
             className="text-5xl md:text-6xl font-bold text-center mb-8 text-gray-900"
           >
-            Why Choose <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">WorkHub</span>
+            Why Choose <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Us</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
