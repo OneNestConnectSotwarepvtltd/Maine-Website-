@@ -7,7 +7,7 @@ const ServiceDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Services data (same as in ServicesPage)
+  // Services data with OneNest Connect brand colors
   const services = [
     {
       id: 1,
@@ -15,7 +15,7 @@ const ServiceDetailPage = () => {
       description: 'Build modern, responsive websites with cutting-edge technologies and seamless user experiences',
       fullDesc: 'Transform your digital presence with our cutting-edge web development solutions. We create stunning, high-performance websites that drive engagement and deliver measurable results for your business.',
       image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&auto=format&fit=crop',
-      gradient: 'from-blue-500 to-purple-600',
+      gradient: 'from-[#0EA5E9] to-[#06B6D4]', // Cyan to Light Blue (matching logo)
       features: [
         'Responsive design that works seamlessly across all devices',
         'SEO optimized architecture for better search engine rankings',
@@ -32,7 +32,7 @@ const ServiceDetailPage = () => {
       description: 'Scalable cloud infrastructure and migration services for seamless business operations',
       fullDesc: 'Modernize your infrastructure with enterprise-grade cloud solutions. We help businesses migrate, manage, and optimize their cloud environments for maximum efficiency and cost savings.',
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop',
-      gradient: 'from-cyan-500 to-blue-600',
+      gradient: 'from-[#06B6D4] to-[#0891B2]', // Cyan shades
       features: [
         'Seamless cloud migration with zero downtime',
         'Multi-cloud architecture design and implementation',
@@ -49,7 +49,7 @@ const ServiceDetailPage = () => {
       description: 'Native and cross-platform mobile applications that deliver exceptional user experiences',
       fullDesc: 'Create powerful mobile applications that engage users and drive business growth. Our expert team builds native and cross-platform apps with stunning UI and seamless performance.',
       image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop',
-      gradient: 'from-purple-500 to-pink-600',
+      gradient: 'from-[#0EA5E9] to-[#0284C7]', // Blue shades
       features: [
         'Native iOS and Android development',
         'Cross-platform solutions with React Native and Flutter',
@@ -66,7 +66,7 @@ const ServiceDetailPage = () => {
       description: 'Streamline customer relationships with powerful CRM systems that drive sales and loyalty',
       fullDesc: 'Transform your customer relationships with intelligent CRM solutions. We help businesses manage leads, automate sales processes, and deliver exceptional customer experiences at scale.',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop',
-      gradient: 'from-green-500 to-teal-600',
+      gradient: 'from-[#10B981] to-[#059669]', // Green shades (matching logo green)
       features: [
         'Custom CRM implementation and configuration',
         'Sales pipeline automation and lead management',
@@ -83,7 +83,7 @@ const ServiceDetailPage = () => {
       description: 'Streamline HR operations with modern human resource management systems',
       fullDesc: 'Empower your HR team with comprehensive HRM solutions. We help businesses automate recruitment, payroll, attendance, and employee management for increased efficiency and employee satisfaction.',
       image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop',
-      gradient: 'from-red-500 to-orange-600',
+      gradient: 'from-[#06B6D4] to-[#10B981]', // Cyan to Green blend
       features: [
         'End-to-end recruitment and onboarding automation',
         'Payroll processing and tax compliance',
@@ -100,7 +100,7 @@ const ServiceDetailPage = () => {
       description: 'Create stunning user interfaces and experiences that drive engagement and conversions',
       fullDesc: 'Design experiences that users love and businesses need. Our design team crafts beautiful, intuitive interfaces that enhance user satisfaction and drive measurable business results.',
       image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop',
-      gradient: 'from-pink-500 to-rose-600',
+      gradient: 'from-[#0284C7] to-[#06B6D4]', // Blue to Cyan
       features: [
         'User research and persona development',
         'Information architecture and user flow design',
@@ -113,10 +113,8 @@ const ServiceDetailPage = () => {
     }
   ];
 
-  // Find service by ID from URL params
   const service = services.find(s => s.id === parseInt(id));
 
-  // If service not found
   if (!service) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -125,7 +123,7 @@ const ServiceDetailPage = () => {
           <h1 className="text-3xl font-bold mb-4 text-gray-800">Service Not Found</h1>
           <button 
             onClick={() => navigate('/services')}
-            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all"
+            className="bg-gradient-to-r from-[#0EA5E9] to-[#06B6D4] text-white px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all"
           >
             Back to Services
           </button>
@@ -140,7 +138,6 @@ const ServiceDetailPage = () => {
       
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
-        {/* Background */}
         <div className="absolute inset-0">
           <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
           <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-90`}></div>
@@ -152,7 +149,6 @@ const ServiceDetailPage = () => {
           </div>
         </div>
 
-        {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
           <button 
             onClick={() => navigate('/services')}
@@ -173,7 +169,7 @@ const ServiceDetailPage = () => {
             <div className="flex flex-wrap gap-4">
               <button 
                 onClick={() => navigate('/contact')}
-                className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:shadow-2xl hover:scale-105 inline-flex items-center"
+                className="bg-white text-[#0EA5E9] px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:shadow-2xl hover:scale-105 inline-flex items-center"
               >
                 <span>Get Started Now</span>
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -195,7 +191,7 @@ const ServiceDetailPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {service.features.map((feature, idx) => (
-              <div key={idx} className="group relative p-[1px] rounded-2xl bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-pink-500/40 hover:from-blue-500 hover:to-purple-600 transition-all duration-500">
+              <div key={idx} className="group relative p-[1px] rounded-2xl bg-gradient-to-r from-[#0EA5E9]/40 via-[#06B6D4]/40 to-[#10B981]/40 hover:from-[#0EA5E9] hover:to-[#06B6D4] transition-all duration-500">
                 <div className="relative h-full bg-white/80 backdrop-blur-xl rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                   <p className="text-lg font-medium text-gray-800 leading-relaxed">
                     {feature}
@@ -216,7 +212,7 @@ const ServiceDetailPage = () => {
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             {service.technologies.map((tech, idx) => (
-              <div key={idx} className="px-8 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-purple-200 rounded-full text-purple-700 font-bold text-lg hover:shadow-lg hover:scale-105 transition-all">
+              <div key={idx} className="px-8 py-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-full text-[#0284C7] font-bold text-lg hover:shadow-lg hover:scale-105 transition-all">
                 {tech}
               </div>
             ))}
@@ -225,7 +221,7 @@ const ServiceDetailPage = () => {
       )}
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#0EA5E9] to-[#06B6D4] relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-white font-semibold mb-6">
             <Star className="w-5 h-5 fill-yellow-300 text-yellow-300" />
@@ -242,7 +238,7 @@ const ServiceDetailPage = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <button 
               onClick={() => navigate('/contact')}
-              className="bg-white text-purple-600 px-10 py-5 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:shadow-2xl hover:scale-105 inline-flex items-center"
+              className="bg-white text-[#0EA5E9] px-10 py-5 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:shadow-2xl hover:scale-105 inline-flex items-center"
             >
               <span>Start Your Project</span>
               <ArrowRight className="ml-3 w-6 h-6" />

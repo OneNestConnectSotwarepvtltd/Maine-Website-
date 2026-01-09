@@ -197,61 +197,59 @@ const ContactPage = () => {
         />
       </div>
 
-      <section className="relative h-screen -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-  <motion.div
-    className="absolute inset-0 opacity-20"
-  >
+      <section className="relative min-h-[550px] -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+  <motion.div className="absolute inset-0 opacity-20">
     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&h=1080&fit=crop')] bg-cover bg-center" />
   </motion.div>
 
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 1, type: "spring" }}
-            className="mb-8"
-          >
-            <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-3xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
-                alt="Contact Us"
-                className="w-16 h-16 brightness-0 invert"
-              />
-            </div>
-          </motion.div>
+  <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+    <motion.div
+      initial={{ scale: 0, rotate: -180 }}
+      animate={{ scale: 1, rotate: 0 }}
+      transition={{ duration: 1, type: "spring" }}
+      className="mb-4"
+    >
+      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
+          alt="Contact Us"
+          className="w-10 h-10 brightness-0 invert"
+        />
+      </div>
+    </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-6xl md:text-8xl font-bold text-white mb-6"
-          >
-            Contact <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">US</span>
-          </motion.h1>
+    <motion.h3
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3, duration: 0.8 }}
+      className="text-2xl md:text-5xl font-bold text-white mb-6"
+    >
+      Contact <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">US</span>
+    </motion.h3>
 
-          <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl text-gray-300 mb-12"
-          >
-            Let's discuss your next project and bring your vision to life
-          </motion.p>
+    <motion.p
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 0.8 }}
+      className="text-xl md:text-2xl text-gray-300 mb-12"
+    >
+      Let's discuss your next project and bring your vision to life
+    </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-          >
-            <button 
-              onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all"
-            >
-              Get in Touch
-            </button>
-          </motion.div>
-        </div>
-      </section>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.7, duration: 0.5 }}
+    >
+      <button 
+        onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+        className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all"
+      >
+        Get in Touch
+      </button>
+    </motion.div>
+  </div>
+</section>
       <WhatsAppButton/>
 
       {/* ================= CONTACT INFO CARDS ================= */}
