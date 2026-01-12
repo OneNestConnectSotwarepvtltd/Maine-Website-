@@ -194,7 +194,7 @@ const TestimonialsSection = () => {
       {/* Animated Background Blobs */}
       <div className="absolute inset-0 opacity-30 pointer-events-none">
         <motion.div 
-          className="absolute top-10 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl"
+          className="absolute top-10 left-10 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl"
           animate={{
             x: mousePosition.x * 0.02,
             y: mousePosition.y * 0.02,
@@ -459,7 +459,7 @@ const TestimonialsSection = () => {
               whileHover={{ scale: 1.08, y: -5 }}
               className="text-center p-6 bg-white rounded-xl shadow-lg"
             >
-              <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">
                 <AnimatedNumber value={stat.number} />
               </div>
               <div className="text-gray-600 font-medium">{stat.label}</div>
