@@ -189,7 +189,7 @@ const ServicesPage = () => {
       transition={{ duration: 1, type: "spring" }}
       className="mb-4"
     >
-      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
+      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
         <Zap className="w-10 h-10 text-white" />
       </div>
     </motion.div>
@@ -200,8 +200,9 @@ const ServicesPage = () => {
       transition={{ delay: 0.3, duration: 0.8 }}
       className="text-2xl md:text-5xl font-bold text-white mb-6"
     >
-      Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Services</span>
-    </motion.h3>
+Our <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Services</span>   
+
+ </motion.h3>
 
     <motion.p
       initial={{ opacity: 0, y: 50 }}
@@ -217,7 +218,7 @@ const ServicesPage = () => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.7, duration: 0.5 }}
     >
-      <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all">
+      <button className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all">
         Explore Our Solutions
       </button>
     </motion.div>
@@ -239,8 +240,8 @@ const ServicesPage = () => {
               className="text-5xl md:text-6xl font-bold mb-6 text-gray-900"
               whileHover={{ scale: 1.02 }}
             >
-              What We <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Offer</span>
-            </motion.h2>
+What We <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Offer</span>            
+          </motion.h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Cutting-edge solutions tailored to transform your business
             </p>
@@ -337,7 +338,7 @@ const ServicesPage = () => {
             viewport={{ once: true }}
             className="text-5xl md:text-6xl font-bold text-center mb-8 text-gray-900"
           >
-            Why Choose <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Us</span>
+            Why Choose <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Us</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
@@ -457,7 +458,7 @@ const ServicesPage = () => {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="absolute inset-0 w-20 h-20 md:w-24 md:h-24 mx-auto bg-gradient-to-br from-blue-400/30 to-purple-600/30 rounded-full blur-xl"
         />
-        <div className="relative w-20 h-20 md:w-24 md:h-24 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl md:rounded-3xl shadow-2xl flex items-center justify-center transform hover:rotate-12 transition-transform duration-300">
+        <div className="relative w-20 h-20 md:w-24 md:h-24 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl md:rounded-3xl shadow-2xl flex items-center justify-center transform hover:rotate-12 transition-transform duration-300">
           <Sparkles className="w-10 h-10 md:w-12 md:h-12 text-white" />
         </div>
       </motion.div>
@@ -467,7 +468,7 @@ const ServicesPage = () => {
         variants={fadeUp}
       >
         Ready to Get{' '}
-        <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
           Started?
         </span>
       </motion.h2>
@@ -509,7 +510,7 @@ const ServicesPage = () => {
         onClick={handleContactClick}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.98 }}
-        className="relative bg-white text-purple-600 px-8 py-4 md:px-14 md:py-6 rounded-full font-bold text-lg md:text-xl shadow-2xl hover:shadow-purple-500/50 inline-flex items-center group overflow-hidden cursor-pointer transition-shadow"
+        className="relative bg-white text-green-600 px-8 py-4 md:px-14 md:py-6 rounded-full font-bold text-lg md:text-xl shadow-2xl hover:shadow-purple-500/50 inline-flex items-center group overflow-hidden cursor-pointer transition-shadow"
       >
         <span className="relative z-10 flex items-center">
           Contact Us Today

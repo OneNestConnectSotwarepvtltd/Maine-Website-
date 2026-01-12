@@ -89,7 +89,7 @@ const ServiceDetailPage = () => {
       description: 'Build modern, responsive websites with cutting-edge technologies and seamless user experiences',
       fullDesc: 'High-performance websites crafted for growth, speed, and scalability.',
       image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&auto=format&fit=crop',
-      gradient: 'from-[#0EA5E9] to-[#06B6D4]',
+      gradient: 'from-[#10B981] to-[#059669]',
       features: [
         'Responsive design that works seamlessly across all devices',
         'SEO optimized architecture for better search engine rankings',
@@ -106,7 +106,7 @@ const ServiceDetailPage = () => {
       description: 'Scalable cloud infrastructure and migration services for seamless business operations',
       fullDesc: 'Enterprise-grade cloud solutions for secure and efficient operations.',
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop',
-      gradient: 'from-[#06B6D4] to-[#0891B2]',
+      gradient: 'from-[#10B981] to-[#059669]',
       features: [
         'Seamless cloud migration with zero downtime',
         'Multi-cloud architecture design and implementation',
@@ -123,7 +123,7 @@ const ServiceDetailPage = () => {
       description: 'Native and cross-platform mobile applications that deliver exceptional user experiences',
       fullDesc: 'Powerful mobile apps designed to engage users and drive results.',
       image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop',
-      gradient: 'from-[#0EA5E9] to-[#0284C7]',
+      gradient: 'from-[#10B981] to-[#059669]',
       features: [
         'Native iOS and Android development',
         'Cross-platform solutions with React Native and Flutter',
@@ -157,7 +157,7 @@ const ServiceDetailPage = () => {
       description: 'Streamline HR operations with modern human resource management systems',
       fullDesc: 'End-to-end HR automation to simplify workforce management.',
       image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop',
-      gradient: 'from-[#06B6D4] to-[#10B981]',
+      gradient: 'from-[#10B981] to-[#059669]',
       features: [
         'End-to-end recruitment and onboarding automation',
         'Payroll processing and tax compliance',
@@ -174,7 +174,7 @@ const ServiceDetailPage = () => {
       description: 'Create stunning user interfaces and experiences that drive engagement and conversions',
       fullDesc: 'User-centric designs that enhance usability and business impact.',
       image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop',
-      gradient: 'from-[#0284C7] to-[#06B6D4]',
+      gradient: 'from-[#10B981] to-[#059669]',
       features: [
         'User research and persona development',
         'Information architecture and user flow design',

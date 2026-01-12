@@ -209,7 +209,7 @@ const ContactPage = () => {
       transition={{ duration: 1, type: "spring" }}
       className="mb-4"
     >
-      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
+      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
         <img
           src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
           alt="Contact Us"
@@ -224,7 +224,7 @@ const ContactPage = () => {
       transition={{ delay: 0.3, duration: 0.8 }}
       className="text-2xl md:text-5xl font-bold text-white mb-6"
     >
-      Contact <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">US</span>
+      Contact <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">US</span>
     </motion.h3>
 
     <motion.p
@@ -243,7 +243,7 @@ const ContactPage = () => {
     >
       <button 
         onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-        className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all"
+        className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all"
       >
         Get in Touch
       </button>
@@ -304,7 +304,7 @@ const ContactPage = () => {
             >
               <div className="sticky top-8">
                 <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-                  Send Us a <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Message</span>
+                  Send Us a <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Message</span>
                 </h2>
                 <p className="text-xl text-gray-600 mb-8">Fill out the form and we'll get back to you within 24 hours</p>
 
@@ -543,7 +543,7 @@ const ContactPage = () => {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center group disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center group disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -595,7 +595,7 @@ const ContactPage = () => {
               {/* Why Choose Us */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-8 shadow-xl text-white"
+                className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-3xl p-8 shadow-xl text-white"
               >
                 <Globe className="w-12 h-12 mb-4" />
                 <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>

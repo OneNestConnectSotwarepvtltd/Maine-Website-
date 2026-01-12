@@ -216,7 +216,7 @@ const Portfolio = () => {
       transition={{ duration: 1, type: "spring" }}
       className="mb-4"
     >
-      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
+      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
         <Sparkles className="w-10 h-10 text-white" />
       </div>
     </motion.div>
@@ -227,7 +227,7 @@ const Portfolio = () => {
       transition={{ delay: 0.3, duration: 0.8 }}
       className="text-2xl md:text-5xl font-bold text-white mb-6"
     >
-      Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Portfolio</span>
+      Our <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Portfolio</span>
     </motion.h3>
 
     <motion.p
@@ -244,7 +244,7 @@ const Portfolio = () => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.7, duration: 0.5 }}
     >
-      <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all">
+      <button className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all">
         Explore Our Work
       </button>
     </motion.div>
@@ -406,7 +406,7 @@ const Portfolio = () => {
               transition={{ duration: 0.8, type: "spring" }}
               className="mb-8"
             >
-              <div className="relative w-24 h-24 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-3xl shadow-2xl flex items-center justify-center transform hover:rotate-12 transition-transform">
+              <div className="relative w-24 h-24 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl shadow-2xl flex items-center justify-center transform hover:rotate-12 transition-transform">
                 <Zap className="w-12 h-12 text-white" />
               </div>
             </motion.div>
@@ -416,7 +416,7 @@ const Portfolio = () => {
               variants={fadeUp}
             >
               Ready to Start Your{' '}
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
                 Project?
               </span>
             </motion.h2>
@@ -433,7 +433,7 @@ const Portfolio = () => {
               onClick={handleContactClick}
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-white text-purple-600 px-12 py-5 rounded-full font-bold text-xl shadow-2xl hover:shadow-purple-500/50 inline-flex items-center group overflow-hidden transition-shadow cursor-pointer"
+              className="bg-white text-green-600 px-12 py-5 rounded-full font-bold text-xl shadow-2xl hover:shadow-purple-500/50 inline-flex items-center group overflow-hidden transition-shadow cursor-pointer"
             >
               <span className="relative z-10 flex items-center">
                 Get In Touch

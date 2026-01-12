@@ -247,7 +247,7 @@ const CareersPage = () => {
       transition={{ duration: 1, type: "spring" }}
       className="mb-4"
     >
-      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
+      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
         <Rocket className="w-10 h-10 text-white" />
       </div>
     </motion.div>
@@ -258,7 +258,7 @@ const CareersPage = () => {
       transition={{ delay: 0.3, duration: 0.8 }}
       className="text-2xl md:text-5xl font-bold text-white mb-6"
     >
-      Join Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Team</span>
+      Join Our <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Team</span>
     </motion.h3>
 
     <motion.p
@@ -275,7 +275,7 @@ const CareersPage = () => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.7, duration: 0.5 }}
     >
-      <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-pink-500/50 transform hover:scale-105 transition-all">
+      <button className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-pink-500/50 transform hover:scale-105 transition-all">
         Explore Opportunities
       </button>
     </motion.div>
@@ -296,7 +296,7 @@ const CareersPage = () => {
       className="text-center mb-20"
     >
       <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-        Open <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Positions</span>
+        Open <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Positions</span>
       </h2>
       <p className="text-xl text-gray-600 max-w-3xl mx-auto">
         Find your dream role and grow with us
@@ -330,13 +330,13 @@ const CareersPage = () => {
                     <motion.div
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
-                      className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0"
+                      className="w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0"
                     >
                       <Icon className="w-8 h-8 text-white" />
                     </motion.div>
                     <div>
                       <motion.h3 
-                        className="text-3xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all"
+                        className="text-3xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-green-600 group-hover:to-emerald-600 group-hover:bg-clip-text transition-all"
                         whileHover={{ x: 5 }}
                       >
                         {job.title}
@@ -380,7 +380,7 @@ const CareersPage = () => {
                     onClick={() => handleApply(job.title)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full lg:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center group/btn"
+                    className="w-full lg:w-auto bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center group/btn"
                   >
                     <span>Apply Now</span>
                     <motion.div
@@ -412,7 +412,7 @@ const CareersPage = () => {
             viewport={{ once: true }}
             className="text-5xl md:text-6xl font-bold text-center mb-20 text-gray-900"
           >
-            Our <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Benefits</span>
+            Our <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Benefits</span>
           </motion.h2>
 
           <motion.div
@@ -480,13 +480,13 @@ const CareersPage = () => {
               transition={{ duration: 0.8, type: "spring" }}
               className="mb-8"
             >
-              <div className="w-24 h-24 mx-auto bg-gradient-to-br from-purple-400 to-pink-600 rounded-3xl shadow-2xl flex items-center justify-center">
+              <div className="w-24 h-24 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl shadow-2xl flex items-center justify-center">
                 <Rocket className="w-12 h-12 text-white" />
               </div>
             </motion.div>
 
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Don't See Your <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Role?</span>
+              Don't See Your <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Role?</span>
             </h2>
 
             <p className="text-xl text-purple-100 mb-10 max-w-3xl mx-auto">
@@ -497,7 +497,7 @@ const CareersPage = () => {
               onClick={() => handleApply('general')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-purple-600 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-purple-500/50 inline-flex items-center group transition-all"
+              className="bg-white text-green-600 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-purple-500/50 inline-flex items-center group transition-all"
             >
               <span>Send Your Resume</span>
               <ArrowRight className="ml-3 w-6 h-6 transform group-hover:translate-x-2 transition-transform" />
