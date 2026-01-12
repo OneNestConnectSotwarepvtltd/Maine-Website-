@@ -315,6 +315,200 @@ className={`px-8 py-4 bg-gradient-to-r ${service.gradient} text-white rounded-fu
         </div>
       </section>
 
+      {/* ================= CRM DASHBOARD PREVIEW (Only for CRM Service) ================= */}
+      {service.id === 4 && (
+        <section className="py-32 bg-white relative overflow-hidden">
+          {/* Background Effects */}
+          <motion.div
+            className="absolute top-20 right-20 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{ duration: 8, repeat: Infinity }}
+          />
+          
+          <div className="max-w-7xl mx-auto px-4 relative z-10">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
+                CRM Dashboard <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">Preview</span>
+              </h2>
+              <p className="text-xl text-gray-600">Get a glimpse of your future CRM system</p>
+            </motion.div>
+
+            {/* Dashboard Container */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-gray-200 shadow-2xl"
+            >
+              {/* Dashboard Header */}
+              <div className="flex items-center justify-between mb-8 pb-6 border-b border-gray-200">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">Sales Dashboard</h3>
+                  <p className="text-gray-600">Real-time insights and analytics</p>
+                </div>
+                <div className="flex gap-3">
+                  <div className="px-4 py-2 bg-green-500/20 text-green-400 rounded-lg font-semibold">
+                    Live Data
+                  </div>
+                </div>
+              </div>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {[
+                  { label: 'Total Leads', value: '2,847', change: '+12.5%', icon: '👥' },
+                  { label: 'Active Deals', value: '156', change: '+8.2%', icon: '💼' },
+                  { label: 'Revenue', value: '$428K', change: '+23.1%', icon: '💰' },
+                  { label: 'Conversion Rate', value: '32%', change: '+5.3%', icon: '📈' }
+                ].map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-green-500 hover:shadow-xl transition-all"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-3xl">{stat.icon}</span>
+                      <span className="text-green-400 text-sm font-semibold">{stat.change}</span>
+                    </div>
+                    <div className="text-3xl font-bold text-gray-900 mb-1">
+                      <AnimatedNumber value={stat.value} />
+                    </div>
+                    <div className="text-gray-600 text-sm">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Charts Section */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                {/* Sales Pipeline */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+                >
+                  <h4 className="text-xl font-bold text-gray-900 mb-6">Sales Pipeline</h4>
+                  <div className="space-y-4">
+                    {[
+                      { stage: 'Prospecting', count: 45, width: '75%', color: 'bg-blue-500' },
+                      { stage: 'Qualification', count: 32, width: '55%', color: 'bg-purple-500' },
+                      { stage: 'Proposal', count: 28, width: '45%', color: 'bg-yellow-500' },
+                      { stage: 'Negotiation', count: 18, width: '30%', color: 'bg-orange-500' },
+                      { stage: 'Closed Won', count: 33, width: '60%', color: 'bg-green-500' }
+                    ].map((item, idx) => (
+                      <div key={idx}>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-gray-700 text-sm">{item.stage}</span>
+                          <span className="text-gray-900 font-semibold">{item.count}</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: item.width }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1, duration: 1 }}
+                            className={`${item.color} h-full rounded-full`}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Recent Activities */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+                >
+                  <h4 className="text-xl font-bold text-gray-900 mb-6">Recent Activities</h4>
+                  <div className="space-y-4">
+                    {[
+                      { action: 'New lead assigned', user: 'John Doe', time: '5 min ago', color: 'text-blue-400' },
+                      { action: 'Deal closed', user: 'Sarah Smith', time: '23 min ago', color: 'text-green-400' },
+                      { action: 'Meeting scheduled', user: 'Mike Johnson', time: '1 hour ago', color: 'text-purple-400' },
+                      { action: 'Proposal sent', user: 'Emily Brown', time: '2 hours ago', color: 'text-yellow-400' },
+                      { action: 'Follow-up call', user: 'David Wilson', time: '3 hours ago', color: 'text-orange-400' }
+                    ].map((activity, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all"
+                      >
+                        <div className={`w-2 h-2 ${activity.color.replace('text-', 'bg-')} rounded-full mt-2`} />
+                        <div className="flex-1">
+                          <p className="text-gray-900 font-medium">{activity.action}</p>
+                          <p className="text-gray-600 text-sm">{activity.user} • {activity.time}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Top Performers */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+              >
+                <h4 className="text-xl font-bold text-gray-900 mb-6">Top Performers This Month</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {[
+                    { name: 'Sarah Johnson', deals: 12, revenue: '$156K', rank: 1, avatar: '🥇' },
+                    { name: 'Michael Chen', deals: 10, revenue: '$142K', rank: 2, avatar: '🥈' },
+                    { name: 'Emma Davis', deals: 9, revenue: '$128K', rank: 3, avatar: '🥉' }
+                  ].map((performer, idx) => (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ scale: 1.03, y: -3 }}
+                      className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-200 shadow-md hover:shadow-xl transition-all"
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-3xl">{performer.avatar}</span>
+                        <div>
+                          <p className="text-gray-900 font-semibold">{performer.name}</p>
+                          <p className="text-gray-600 text-sm">Rank #{performer.rank}</p>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <div>
+                          <p className="text-gray-600 text-xs">Deals Closed</p>
+                          <p className="text-gray-900 font-bold text-lg">{performer.deals}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-600 text-xs">Revenue</p>
+                          <p className="text-green-600 font-bold text-lg">{performer.revenue}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       {/* ================= FEATURES SECTION ================= */}
       <section className="py-32 bg-white relative">
         <div className="max-w-7xl mx-auto px-4">
