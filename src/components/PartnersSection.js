@@ -138,7 +138,7 @@ const PartnersSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-block px-6 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-sm font-semibold uppercase"
+            className="inline-block px-6 py-2 bg-gradient-to-r from-green-100 to-emerald-100 text-blue-700 rounded-full text-sm font-semibold uppercase"
           >
             Trusted Partnerships
           </motion.span>
@@ -150,7 +150,7 @@ const PartnersSection = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold mt-6 mb-4"
           >
-            Industry Leaders <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Trust Us</span>
+            Industry Leaders <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Trust Us</span>
           </motion.h2>
 
           <motion.p
