@@ -182,7 +182,7 @@ const Portfolio = () => {
       <WhatsAppButton/>
 
       {/* ================= HERO SECTION ================= */}
-<section className="relative min-h-[550px] -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+<section className="relative min-h-[550px] -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-indigo-900">
   <motion.div className="absolute inset-0 opacity-20">
     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop')] bg-cover bg-center" />
   </motion.div>

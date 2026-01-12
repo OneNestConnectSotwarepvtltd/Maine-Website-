@@ -233,7 +233,7 @@ const ServiceDetailPage = () => {
       </div>
 
       {/* ================= HERO SECTION - ABOUT PAGE STYLE ================= */}
-      <section className="relative min-h-[550px] -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+      <section className="relative min-h-[550px] -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-indigo-900">
         <motion.div className="absolute inset-0 opacity-20">
 <div className={`absolute inset-0 bg-cover bg-center`} style={{ backgroundImage: `url(${service.image})` }} />
         </motion.div>
@@ -326,7 +326,7 @@ className={`px-8 py-4 bg-gradient-to-r ${service.gradient} text-white rounded-fu
             className="text-center mb-20"
           >
             <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-              Key <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Features</span>
+              Key <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Features</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Comprehensive features designed for your success
@@ -378,7 +378,7 @@ className={`px-8 py-4 bg-gradient-to-r ${service.gradient} text-white rounded-fu
             className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-              Technologies We <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Use</span>
+              Technologies We <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">Use</span>
             </h2>
             <p className="text-xl text-gray-600">Cutting-edge tools and frameworks</p>
           </motion.div>

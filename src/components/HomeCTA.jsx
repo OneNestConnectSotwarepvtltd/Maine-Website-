@@ -72,7 +72,7 @@ const HomeCTA = () => {
           <motion.div variants={slideRight} transition={{ duration: 0.8 }}>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
               Ready to Start Your{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
                 Project?
               </span>
             </h2>
@@ -89,7 +89,7 @@ const HomeCTA = () => {
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="group bg-gradient-to-r from-blue-500 to-purple-500 text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl hover:shadow-blue-500/50 inline-flex items-center gap-3 transition-all duration-300"
+              className="group bg-gradient-to-r from-green-400 to-emerald-400 text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl hover:shadow-blue-500/50 inline-flex items-center gap-3 transition-all duration-300"
             >
               Get Started Today
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

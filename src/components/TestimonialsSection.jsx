@@ -124,35 +124,35 @@ const TestimonialsSection = () => {
     {
       id: 1,
       name: "Tushar Bansode",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
+      image: "/images/testimonal/Tushar.png",
       rating: 5,
       text: "Onenest Connect Software Pvt. Ltd. is a highly professional company with a strong focus on innovation and quality. Their team is skilled, supportive and delivers projects on time with great attention to detail. The communication and project management were smooth throughout the process. I truly appreciate their dedication and customer-centric approach."
     },
     {
       id: 2,
       name: "Ashutosh Pandit",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
+      image: "/images/testimonal/Ashutosh_Pandit.png",
       rating: 5,
       text: "He is good service providers like digital marketing and website development and mobile application development. Best Company for Noida. Best digital marketing strategy provided. Best best of Noida IT Company."
     },
     {
       id: 3,
       name: "Sandeep Singh",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop",
+      image: "/images/testimonal/Sandeep.png",
       rating: 5,
       text: "Onenest connect software Pvt Ltd is best company for software developer and crm mobile application provided. He is fast delivery to work and website and digital marketing services company in India. Best company for noida Website Development."
     },
     {
       id: 4,
       name: "Rani Kumari",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
+      image: "/images/testimonal/Rani_Kumari.png",
       rating: 5,
       text: "One Nest Connect Software Limited is an excellent IT solutions partner. Best service provider and best offer and I am so happy for using service."
     },
     {
       id: 5,
       name: "Sachin Raghav",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop",
+      image: "/images/testimonal/Sachin.png",
       rating: 5,
       text: "He is best service provider and best CRM and Software Development. best Website development agency."
     }
