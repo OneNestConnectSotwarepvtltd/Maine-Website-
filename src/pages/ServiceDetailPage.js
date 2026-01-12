@@ -462,7 +462,7 @@ className={`px-8 py-4 bg-gradient-to-r ${service.gradient} text-white rounded-fu
             className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight"
           >
             <span className="text-white">Ready to Transform Your </span>
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
               Business?
             </span>
           </motion.h2>
