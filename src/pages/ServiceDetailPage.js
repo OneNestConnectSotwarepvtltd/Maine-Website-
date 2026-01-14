@@ -484,11 +484,11 @@ className={`px-8 py-4 bg-gradient-to-r ${service.gradient} text-white rounded-fu
               <h4 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">Recent Activities</h4>
               <div className="space-y-4">
                 {[
-                  { action: 'New lead assigned', user: 'John Doe', time: '5 min ago', color: 'from-blue-500 to-cyan-500' },
-                  { action: 'Deal closed', user: 'Sarah Smith', time: '23 min ago', color: 'from-emerald-500 to-teal-500' },
-                  { action: 'Meeting scheduled', user: 'Mike Johnson', time: '1 hour ago', color: 'from-purple-500 to-violet-500' },
-                  { action: 'Proposal sent', user: 'Emily Brown', time: '2 hours ago', color: 'from-amber-500 to-yellow-500' },
-                  { action: 'Follow-up call', user: 'David Wilson', time: '3 hours ago', color: 'from-pink-500 to-rose-500' }
+                  { action: 'New lead assigned', user: 'Omkar Chauhan', time: '5 min ago', color: 'from-blue-500 to-cyan-500' },
+                  { action: 'Deal closed', user: 'Abhishek Gupta', time: '23 min ago', color: 'from-emerald-500 to-teal-500' },
+                  { action: 'Meeting scheduled', user: 'Ayush Nigam', time: '1 hour ago', color: 'from-purple-500 to-violet-500' },
+                  { action: 'Proposal sent', user: 'Saurav Singh', time: '2 hours ago', color: 'from-amber-500 to-yellow-500' },
+                  { action: 'Follow-up call', user: 'Bhavesh Sattavan', time: '3 hours ago', color: 'from-pink-500 to-rose-500' }
                 ].map((activity, idx) => (
                   <motion.div
                     key={idx}
