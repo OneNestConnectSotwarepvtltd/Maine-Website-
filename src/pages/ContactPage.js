@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Clock, Globe } from 'lucide-react';
 import WhatsAppButton from '../components/Watsappfloat';
-// API Configuration
-const API_URL = 'http://localhost:5000/api';
+
+// ✅ FIXED: Dynamic API URL based on environment
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 /* ---------- Animations ---------- */
 const fadeUp = {
@@ -144,15 +145,19 @@ const ContactPage = () => {
     setSubmitError('');
     
     try {
+      console.log('📤 Sending request to:', `${API_URL}/contact`);
+      
       const response = await fetch(`${API_URL}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
+      console.log('📥 Response:', data);
 
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
@@ -167,7 +172,7 @@ const ContactPage = () => {
       }, 5000);
 
     } catch (error) {
-      console.error('Submission error:', error);
+      console.error('❌ Submission error:', error);
       setIsSubmitting(false);
       setSubmitError(error.message || 'Failed to submit form. Please try again.');
     }
@@ -198,61 +203,61 @@ const ContactPage = () => {
       </div>
 
       <section className="relative min-h-[550px] -mt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-indigo-900">
-  <motion.div className="absolute inset-0 opacity-20">
-    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&h=1080&fit=crop')] bg-cover bg-center" />
-  </motion.div>
+        <motion.div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&h=1080&fit=crop')] bg-cover bg-center" />
+        </motion.div>
 
-  <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-    <motion.div
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ duration: 1, type: "spring" }}
-      className="mb-4"
-    >
-      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
-          alt="Contact Us"
-          className="w-10 h-10 brightness-0 invert"
-        />
-      </div>
-    </motion.div>
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+          <motion.div
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ duration: 1, type: "spring" }}
+            className="mb-4"
+          >
+            <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
+                alt="Contact Us"
+                className="w-10 h-10 brightness-0 invert"
+              />
+            </div>
+          </motion.div>
 
-    <motion.h3
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3, duration: 0.8 }}
-      className="text-2xl md:text-5xl font-bold text-white mb-6"
-    >
-      Contact <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">US</span>
-    </motion.h3>
+          <motion.h3
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-2xl md:text-5xl font-bold text-white mb-6"
+          >
+            Contact <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">US</span>
+          </motion.h3>
 
-    <motion.p
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5, duration: 0.8 }}
-      className="text-xl md:text-2xl text-gray-300 mb-12"
-    >
-      Let's discuss your next project and bring your vision to life
-    </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-xl md:text-2xl text-gray-300 mb-12"
+          >
+            Let's discuss your next project and bring your vision to life
+          </motion.p>
 
-    <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.7, duration: 0.5 }}
-    >
-      <button 
-        onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-        className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all"
-      >
-        Get in Touch
-      </button>
-    </motion.div>
-  </div>
-</section>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+          >
+            <button 
+              onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all"
+            >
+              Get in Touch
+            </button>
+          </motion.div>
+        </div>
+      </section>
       <WhatsAppButton/>
 
-      {/* ================= CONTACT INFO CARDS ================= */}
+      {/* Contact Info Cards */}
       <section className="py-32 bg-white relative">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
@@ -289,7 +294,7 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* ================= FORM & MAP SECTION ================= */}
+      {/* Form & Map Section */}
       <section id="contact-form" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
@@ -340,10 +345,7 @@ const ContactPage = () => {
 
                 <div className="space-y-6">
                   {/* Name */}
-                  <motion.div
-                    whileHover={{ scale: 1.01 }}
-                    className="relative"
-                  >
+                  <motion.div whileHover={{ scale: 1.01 }} className="relative">
                     <label className="block text-gray-700 font-semibold mb-2">Your Name *</label>
                     <input
                       type="text"
@@ -445,7 +447,7 @@ const ContactPage = () => {
                           key={idx}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className={`relative cursor-pointer group`}
+                          className="relative cursor-pointer group"
                         >
                           <input
                             type="checkbox"
@@ -574,25 +576,22 @@ const ContactPage = () => {
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
-               {/* Map */}
-<motion.div
-  whileHover={{ scale: 1.02 }}
-  className="bg-white rounded-3xl shadow-lg overflow-hidden border-4 border-gray-100"
->
-  <iframe
-    src="https://www.google.com/maps?q=Sector+44+Near+Botanical+Garden+Metro+Station+Noida+Uttar+Pradesh+201301&output=embed"
-    width="100%"
-    height="400"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    title="Office Location - Sector 44, Noida"
-    className="w-full"
-  />
-</motion.div>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-white rounded-3xl shadow-lg overflow-hidden border-4 border-gray-100"
+              >
+                <iframe
+                  src="https://www.google.com/maps?q=Sector+44+Near+Botanical+Garden+Metro+Station+Noida+Uttar+Pradesh+201301&output=embed"
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  title="Office Location - Sector 44, Noida"
+                  className="w-full"
+                />
+              </motion.div>
 
-
-              {/* Why Choose Us */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-3xl p-8 shadow-xl text-white"
