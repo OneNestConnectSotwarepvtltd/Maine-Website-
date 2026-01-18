@@ -33,10 +33,21 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
+
+  // ✅ UPDATED - Environment-aware Admin URL
+  const handleLoginClick = () => {
+  // ✅ CRA ke liye - process.env.REACT_APP_
+  const adminUrl = process.env.REACT_APP_ADMIN_URL || 'https://adminjo.vercel.app/';
+  
+  // Same window redirect (back button will work)
+  window.location.href = adminUrl;
+  
+  // YA agar naye tab me chahiye (back won't work but better UX):
+  // window.open(adminUrl, '_blank');
+};
   
   return (
     <nav className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -46,7 +57,6 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo - Bada aur tagda */}
           <Link to="/" className="px-4 py-2 transform ">
             <img
               src="/images/OneNestPng.png"
@@ -76,7 +86,6 @@ const Navbar = () => {
                     <span className="relative z-10">{item.name}</span>
                   </Link>
 
-                  {/* Services Dropdown */}
                   {item.name === 'Services' && showServicesDropdown && (
                     <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50 animate-fadeIn">
                       <div className="py-2">
@@ -99,12 +108,13 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:block">
-  <button 
-    className="relative px-5 py-2.5 font-semibold text-[17.5px] transition-all duration-300 simple-underline text-gray-700 hover:text-blue-600"
-  >
-    <span className="relative z-10">Log in</span>
-  </button>
-</div>
+            <button 
+              onClick={handleLoginClick}
+              className="relative px-5 py-2.5 font-semibold text-[17.5px] transition-all duration-300 simple-underline text-gray-700 hover:text-blue-600"
+            >
+              <span className="relative z-10">Log in</span>
+            </button>
+          </div>
           
           <button 
             onClick={() => setIsOpen(!isOpen)}
@@ -137,7 +147,6 @@ const Navbar = () => {
                   {item.name}
                 </Link>
                 
-                {/* Mobile Services Submenu */}
                 {item.name === 'Services' && (
                   <div className="mt-2 ml-4 space-y-1">
                     {services.map((service) => (
@@ -153,11 +162,13 @@ const Navbar = () => {
                 )}
               </div>
             ))}
+            
             <button 
-  className="block w-full text-left px-5 py-3.5 font-semibold transition-all duration-300 simple-underline text-gray-700 hover:text-blue-600 mt-4"
->
-  Log in
-</button>
+              onClick={handleLoginClick}
+              className="block w-full text-left px-5 py-3.5 font-semibold transition-all duration-300 simple-underline text-gray-700 hover:text-blue-600 mt-4"
+            >
+              Log in
+            </button>
           </div>
         )}
       </div>
@@ -171,7 +182,6 @@ const Navbar = () => {
           animation: fadeIn 0.2s ease-out;
         }
         
-        /* Simple underline animation for all menu items */
         .simple-underline {
           position: relative;
         }
