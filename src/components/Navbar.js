@@ -107,12 +107,16 @@ const Navbar = () => {
             })}
           </div>
 
-          <div className="hidden lg:block">
+           <div className="hidden lg:block">
             <button 
               onClick={handleLoginClick}
-              className="relative px-5 py-2.5 font-semibold text-[17.5px] transition-all duration-300 simple-underline text-gray-700 hover:text-blue-600"
+              className="group relative px-6 py-2.5 font-semibold text-[17px] overflow-hidden rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
-              <span className="relative z-10">Log in</span>
+              <span className="relative z-10 flex items-center gap-2">
+                Log in
+               
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
           
@@ -163,11 +167,16 @@ const Navbar = () => {
               </div>
             ))}
             
+            {/* 🔥 ENHANCED LOGIN BUTTON - Mobile */}
             <button 
               onClick={handleLoginClick}
-              className="block w-full text-left px-5 py-3.5 font-semibold transition-all duration-300 simple-underline text-gray-700 hover:text-blue-600 mt-4"
+              className="group relative w-full px-6 py-3.5 font-semibold text-[17px] overflow-hidden rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg active:scale-95 transition-all duration-300 mt-4"
             >
-              Log in
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                Log in
+              
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 opacity-0 group-active:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
         )}
