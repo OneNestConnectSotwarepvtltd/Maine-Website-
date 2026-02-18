@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import { servicesData } from '../data/servicesData';
-import { ArrowRight, Sparkles, CheckCircle, X, Clock, Users, Tag, Briefcase, Award, QrCode, Smartphone, MessageCircle, Phone } from 'lucide-react';
+import { ArrowRight, Sparkles, CheckCircle, X, Clock, Users, Tag, Briefcase, Award, QrCode, Smartphone, MessageCircle, Phone, User, Mail, GraduationCap, Calendar, BookOpen, AlertCircle } from 'lucide-react';
 import PartnersSection from '../components/PartnersSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import WhatsAppButton from '../components/Watsappfloat';
@@ -15,6 +15,7 @@ import HomeCTA from '../components/HomeCTA';
 const HomePage = () => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [showEnrollForm, setShowEnrollForm] = useState(false);
   const [showQRStep, setShowQRStep] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 7,
@@ -23,11 +24,25 @@ const HomePage = () => {
     seconds: 0
   });
   const [seatsLeft, setSeatsLeft] = useState(90);
+  const [enrollFormData, setEnrollFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    college: '',
+    year: '',
+    branch: ''
+  });
+  const [enrollErrors, setEnrollErrors] = useState({});
+  const [isEnrollSubmitting, setIsEnrollSubmitting] = useState(false);
+  const [enrollSubmitError, setEnrollSubmitError] = useState('');
   const navigate = useNavigate();
 
   // WhatsApp number
   const whatsappNumber = '918588942008';
   const whatsappMessage = 'Hi! I have completed the payment of ₹4,000 for the Internship Program. Here is my payment screenshot.';
+
+  // API URL
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     // Popup ko 2 seconds baad show karo
@@ -39,24 +54,26 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    // Countdown timer - 7 days se start hoga
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 7);
-
+    // Aaj ki date se exactly 7 din baad
+    const today = new Date();
+    const endDate = new Date(today);
+    endDate.setDate(today.getDate() + 7);
+    endDate.setHours(23, 59, 59, 999);
+    
     const countdownInterval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = endDate - now;
+      const currentTime = new Date();
+      const timeRemaining = endDate.getTime() - currentTime.getTime();
 
-      if (distance < 0) {
+      if (timeRemaining <= 0) {
         clearInterval(countdownInterval);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        });
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        
+        setTimeLeft({ days, hours, minutes, seconds });
       }
     }, 1000);
 
@@ -69,15 +86,85 @@ const HomePage = () => {
 
   const closePopup = () => {
     setShowPopup(false);
+    setShowEnrollForm(false);
     setShowQRStep(false);
+    setEnrollFormData({
+      name: '',
+      email: '',
+      phone: '',
+      college: '',
+      year: '',
+      branch: ''
+    });
+    setEnrollErrors({});
+    setEnrollSubmitError('');
   };
 
   const handleEnrollClick = () => {
-    setShowQRStep(true);
+    setShowEnrollForm(true);
   };
 
-  const handleBackClick = () => {
+  const handleBackToDetails = () => {
+    setShowEnrollForm(false);
+  };
+
+  const handleBackToForm = () => {
     setShowQRStep(false);
+  };
+
+  const handleEnrollFormChange = (e) => {
+    const { name, value } = e.target;
+    setEnrollFormData({ ...enrollFormData, [name]: value });
+    if (enrollErrors[name]) {
+      setEnrollErrors({ ...enrollErrors, [name]: '' });
+    }
+    if (enrollSubmitError) setEnrollSubmitError('');
+  };
+
+  const handleEnrollFormSubmit = async () => {
+    const newErrors = {};
+    
+    if (!enrollFormData.name.trim()) newErrors.name = 'Name is required';
+    if (!enrollFormData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(enrollFormData.email)) newErrors.email = 'Invalid email';
+    if (!enrollFormData.phone.trim()) newErrors.phone = 'Phone is required';
+    else if (!/^[0-9]{10}$/.test(enrollFormData.phone.replace(/\D/g, ''))) newErrors.phone = 'Invalid phone number';
+    if (!enrollFormData.college.trim()) newErrors.college = 'College name is required';
+    if (!enrollFormData.year.trim()) newErrors.year = 'Year is required';
+    if (!enrollFormData.branch.trim()) newErrors.branch = 'Branch is required';
+
+    if (Object.keys(newErrors).length > 0) {
+      setEnrollErrors(newErrors);
+      return;
+    }
+
+    setIsEnrollSubmitting(true);
+    setEnrollSubmitError('');
+    
+    try {
+      const response = await fetch(`${API_URL}/enroll`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(enrollFormData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      setIsEnrollSubmitting(false);
+      setShowQRStep(true);
+
+    } catch (error) {
+      console.error('❌ Enrollment error:', error);
+      setIsEnrollSubmitting(false);
+      setEnrollSubmitError(error.message || 'Failed to submit form. Please try again.');
+    }
   };
 
   const handleWhatsAppRedirect = () => {
@@ -137,14 +224,14 @@ const HomePage = () => {
                       >
                         <Sparkles className="text-yellow-300" size={18} />
                         <span className="text-white font-bold text-sm uppercase tracking-wide">
-                          {showQRStep ? 'Complete Payment' : 'Limited Time Offer'}
+                          {showQRStep ? 'Complete Payment' : showEnrollForm ? 'Enrollment Form' : 'Limited Time Offer'}
                         </span>
                         <Sparkles className="text-yellow-300" size={18} />
                       </motion.div>
                     </div>
 
                     <AnimatePresence mode="wait">
-                      {!showQRStep ? (
+                      {!showEnrollForm && !showQRStep ? (
                         // STEP 1: Internship Details
                         <motion.div
                           key="step1"
@@ -285,10 +372,270 @@ const HomePage = () => {
                             ⚡ Hurry! Seats filling fast
                           </p>
                         </motion.div>
-                      ) : (
-                        // STEP 2: QR Code Payment
+                      ) : showEnrollForm && !showQRStep ? (
+                        // STEP 2: Enrollment Form
                         <motion.div
                           key="step2"
+                          initial={{ opacity: 0, x: 50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -50 }}
+                          transition={{ duration: 0.3 }}
+                          className="p-5"
+                        >
+                          {/* Form Icon */}
+                          <div className="flex justify-center mb-3">
+                            <motion.div
+                              animate={{ scale: [1, 1.1, 1] }}
+                              transition={{ repeat: Infinity, duration: 2 }}
+                              className="bg-gradient-to-br from-blue-500 to-purple-600 p-3 rounded-xl shadow-lg"
+                            >
+                              <GraduationCap size={32} className="text-white" />
+                            </motion.div>
+                          </div>
+
+                          {/* Heading */}
+                          <h2 className="text-2xl sm:text-3xl font-black text-center mb-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                            Complete Your Details
+                          </h2>
+                          <p className="text-center text-gray-600 dark:text-gray-400 text-sm mb-4">
+                            We'll send confirmation to your email
+                          </p>
+
+                          {/* Error Message */}
+                          {enrollSubmitError && (
+                            <motion.div
+                              initial={{ opacity: 0, y: -20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="bg-gradient-to-r from-red-500 to-rose-500 text-white p-3 rounded-lg mb-4 flex items-center text-sm"
+                            >
+                              <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0" />
+                              <span>{enrollSubmitError}</span>
+                            </motion.div>
+                          )}
+
+                          {/* Form Fields */}
+                          <div className="space-y-3 mb-4">
+                            {/* Name */}
+                            <div>
+                              <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-1 text-sm">
+                                Full Name *
+                              </label>
+                              <div className="relative">
+                                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                <input
+                                  type="text"
+                                  name="name"
+                                  value={enrollFormData.name}
+                                  onChange={handleEnrollFormChange}
+                                  className={`w-full pl-10 pr-4 py-2.5 border-2 rounded-lg focus:outline-none transition-all text-sm ${
+                                    enrollErrors.name 
+                                      ? 'border-red-500' 
+                                      : 'border-gray-300 focus:border-purple-500'
+                                  }`}
+                                  placeholder="Enter your full name"
+                                />
+                              </div>
+                              {enrollErrors.name && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center">
+                                  <AlertCircle className="w-3 h-3 mr-1" />
+                                  {enrollErrors.name}
+                                </p>
+                              )}
+                            </div>
+
+                            {/* Email */}
+                            <div>
+                              <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-1 text-sm">
+                                Email Address *
+                              </label>
+                              <div className="relative">
+                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                <input
+                                  type="email"
+                                  name="email"
+                                  value={enrollFormData.email}
+                                  onChange={handleEnrollFormChange}
+                                  className={`w-full pl-10 pr-4 py-2.5 border-2 rounded-lg focus:outline-none transition-all text-sm ${
+                                    enrollErrors.email 
+                                      ? 'border-red-500' 
+                                      : 'border-gray-300 focus:border-purple-500'
+                                  }`}
+                                  placeholder="your.email@example.com"
+                                />
+                              </div>
+                              {enrollErrors.email && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center">
+                                  <AlertCircle className="w-3 h-3 mr-1" />
+                                  {enrollErrors.email}
+                                </p>
+                              )}
+                            </div>
+
+                            {/* Phone */}
+                            <div>
+                              <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-1 text-sm">
+                                Phone Number *
+                              </label>
+                              <div className="relative">
+                                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                <input
+                                  type="tel"
+                                  name="phone"
+                                  value={enrollFormData.phone}
+                                  onChange={handleEnrollFormChange}
+                                  className={`w-full pl-10 pr-4 py-2.5 border-2 rounded-lg focus:outline-none transition-all text-sm ${
+                                    enrollErrors.phone 
+                                      ? 'border-red-500' 
+                                      : 'border-gray-300 focus:border-purple-500'
+                                  }`}
+                                  placeholder="+91 1234567890"
+                                />
+                              </div>
+                              {enrollErrors.phone && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center">
+                                  <AlertCircle className="w-3 h-3 mr-1" />
+                                  {enrollErrors.phone}
+                                </p>
+                              )}
+                            </div>
+
+                            {/* College */}
+                            <div>
+                              <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-1 text-sm">
+                                College/University *
+                              </label>
+                              <div className="relative">
+                                <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                <input
+                                  type="text"
+                                  name="college"
+                                  value={enrollFormData.college}
+                                  onChange={handleEnrollFormChange}
+                                  className={`w-full pl-10 pr-4 py-2.5 border-2 rounded-lg focus:outline-none transition-all text-sm ${
+                                    enrollErrors.college 
+                                      ? 'border-red-500' 
+                                      : 'border-gray-300 focus:border-purple-500'
+                                  }`}
+                                  placeholder="Your college name"
+                                />
+                              </div>
+                              {enrollErrors.college && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center">
+                                  <AlertCircle className="w-3 h-3 mr-1" />
+                                  {enrollErrors.college}
+                                </p>
+                              )}
+                            </div>
+
+                            {/* Year & Branch */}
+                            <div className="grid grid-cols-2 gap-3">
+                              {/* Year */}
+                              <div>
+                                <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-1 text-sm">
+                                  Year *
+                                </label>
+                                <div className="relative">
+                                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                  <select
+                                    name="year"
+                                    value={enrollFormData.year}
+                                    onChange={handleEnrollFormChange}
+                                    className={`w-full pl-10 pr-4 py-2.5 border-2 rounded-lg focus:outline-none transition-all text-sm appearance-none ${
+                                      enrollErrors.year 
+                                        ? 'border-red-500' 
+                                        : 'border-gray-300 focus:border-purple-500'
+                                    }`}
+                                  >
+                                    <option value="">Select</option>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="4th Year">4th Year</option>
+                                    <option value="Post Graduate">Post Graduate</option>
+                                  </select>
+                                </div>
+                                {enrollErrors.year && (
+                                  <p className="text-red-500 text-xs mt-1 flex items-center">
+                                    <AlertCircle className="w-3 h-3 mr-1" />
+                                    {enrollErrors.year}
+                                  </p>
+                                )}
+                              </div>
+
+                              {/* Branch */}
+                              <div>
+                                <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-1 text-sm">
+                                  Branch *
+                                </label>
+                                <div className="relative">
+                                  <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                  <input
+                                    type="text"
+                                    name="branch"
+                                    value={enrollFormData.branch}
+                                    onChange={handleEnrollFormChange}
+                                    className={`w-full pl-10 pr-4 py-2.5 border-2 rounded-lg focus:outline-none transition-all text-sm ${
+                                      enrollErrors.branch 
+                                        ? 'border-red-500' 
+                                        : 'border-gray-300 focus:border-purple-500'
+                                    }`}
+                                    placeholder="e.g., CSE"
+                                  />
+                                </div>
+                                {enrollErrors.branch && (
+                                  <p className="text-red-500 text-xs mt-1 flex items-center">
+                                    <AlertCircle className="w-3 h-3 mr-1" />
+                                    {enrollErrors.branch}
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Buttons */}
+                          <div className="grid grid-cols-2 gap-3 mb-3">
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              onClick={handleBackToDetails}
+                              className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 px-4 rounded-lg font-bold text-sm hover:shadow-lg transition-all duration-300"
+                            >
+                              ← Back
+                            </motion.button>
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              onClick={handleEnrollFormSubmit}
+                              disabled={isEnrollSubmitting}
+                              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 px-4 rounded-lg font-bold text-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70"
+                            >
+                              {isEnrollSubmitting ? (
+                                <>
+                                  <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                                  />
+                                  <span>Submitting...</span>
+                                </>
+                              ) : (
+                                <>
+                                  <span>Continue</span>
+                                  <ArrowRight size={16} />
+                                </>
+                              )}
+                            </motion.button>
+                          </div>
+
+                          {/* Footer */}
+                          <p className="text-center text-[10px] text-gray-500 dark:text-gray-400">
+                            📧 Confirmation will be sent to your email
+                          </p>
+                        </motion.div>
+                      ) : (
+                        // STEP 3: QR Code Payment
+                        <motion.div
+                          key="step3"
                           initial={{ opacity: 0, x: 50 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -50 }}
@@ -300,14 +647,14 @@ const HomePage = () => {
                             <motion.div
                               animate={{ scale: [1, 1.1, 1] }}
                               transition={{ repeat: Infinity, duration: 2 }}
-                              className="bg-gradient-to-br from-blue-500 to-purple-600 p-3 rounded-xl shadow-lg"
+                              className="bg-gradient-to-br from-green-500 to-emerald-600 p-3 rounded-xl shadow-lg"
                             >
                               <QrCode size={32} className="text-white" />
                             </motion.div>
                           </div>
 
                           {/* Heading */}
-                          <h2 className="text-2xl sm:text-3xl font-black text-center mb-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                          <h2 className="text-2xl sm:text-3xl font-black text-center mb-1 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
                             Scan & Pay
                           </h2>
                           <p className="text-center text-gray-600 dark:text-gray-400 text-sm mb-4">
@@ -379,7 +726,7 @@ const HomePage = () => {
                             <motion.button
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              onClick={handleBackClick}
+                              onClick={handleBackToForm}
                               className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 px-4 rounded-lg font-bold text-sm hover:shadow-lg transition-all duration-300"
                             >
                               ← Back
