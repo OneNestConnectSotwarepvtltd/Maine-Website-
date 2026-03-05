@@ -11,6 +11,7 @@ import HomeHeroSection from '../components/HomeHeroSection';
 import HomeServicesSection from '../components/HomeServiceSection';
 import { motion, AnimatePresence } from 'framer-motion';
 import HomeCTA from '../components/HomeCTA';
+import EMSPortalDemo from '../components/Emsportaldemo';
 
 const HomePage = () => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -767,8 +768,8 @@ const HomePage = () => {
           </>
         )}
       </AnimatePresence>
-
       <HomeHeroSection />
+      <EMSPortalDemo/>
       <HomeServicesSection />
       <WhyChooseUs />
       <PartnersSection />
